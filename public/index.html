@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Behavioural Interview Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ============================================
+       HEADER: Navigation & branding
+       ============================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">Behavioural Interview Simulator</h1>
+      <nav class="main-nav">
+        <a href="#intro">How it Works</a>
+        <a href="#questionPanel">Practice</a>
+        <a href="#summaryPanel">Summary</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================================
+       MAIN: Interview flow & question handling
+       ============================================ -->
+  <main class="container">
+    
+    <!-- Intro Section: User motivation & CTA -->
+    <section id="intro">
+      <h1>Master Behavioural Interview Questions</h1>
+      <p>Practice behavioural interview questions using the STAR method. You will be asked one question at a time. Receive real-time feedback on your responses and learn how to structure your answers effectively.</p>
+      <div class="buttons">
+        <button id="startBtn">Start Interview</button>
+      </div>
+    </section>
+
+    <!-- Question Panel: Interactive interview experience -->
+    <section id="questionPanel" class="hidden">
+      <!-- Past Answers History: Read-only record of completed answers -->
+      <div id="pastAnswersPanel" class="past-answers-panel" style="display: none;">
+        <div class="past-answers-header">
+          <h3>Completed Questions</h3>
+          <span class="past-answers-badge" id="pastAnswersCount">0</span>
+        </div>
+        <div id="pastAnswersList" class="past-answers-list"></div>
+      </div>
+      <!-- Progress Tracker: Visual indication of interview progress -->
+      <div class="progress-tracker">
+        <span class="progress-text" id="progress">Question 1 of 5</span>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Question Display: Current question being answered -->
+      <div class="question" id="questionText"></div>
+
+      <!-- Answer Input: Text area for user response -->
+      <div style="position: relative;">
+        <textarea id="answerInput" placeholder="Type your answer here. Aim for 2-3 sentences covering the Situation, Task, Action, and Result..."></textarea>
+        <!-- Voice Input: Optional microphone button for speech-to-text -->
+        <button id="micBtn" class="mic-button" type="button" title="Record voice answer">🎤</button>
+      </div>
+
+      <!-- STAR Components Visualization: Real-time feedback structure -->
+      <div id="starVisualization" class="star-components" style="display: none;">
+        <div class="star-component filled-0">
+          <div class="star-label">Situation</div>
+          <div class="star-score score-0">—</div>
+        </div>
+        <div class="star-component filled-0">
+          <div class="star-label">Task</div>
+          <div class="star-score score-0">—</div>
+        </div>
+        <div class="star-component filled-0">
+          <div class="star-label">Action</div>
+          <div class="star-score score-0">—</div>
+        </div>
+        <div class="star-component filled-0">
+          <div class="star-label">Result</div>
+          <div class="star-score score-0">—</div>
+        </div>
+      </div>
+
+      <!-- Submit Button & Controls -->
+      <div class="buttons">
+        <button id="submitBtn">Submit Answer</button>
+      </div>
+
+      <!-- Feedback Card: Suggestions & score breakdown -->
+      <div id="feedback" class="feedback" style="display: none;"></div>
+    </section>
+
+    <!-- Summary Panel: Final results & recommendations -->
+    <section id="summaryPanel" class="hidden">
+      <!-- Summary Header: Performance overview -->
+      <div class="summary-header">
+        <h2>Interview Performance Summary</h2>
+      </div>
+
+      <!-- Overview Card: Total score & performance metric -->
+      <div id="overviewCard" class="overview-card" style="display: none;">
+        <div class="total-score" id="totalScore">0/40</div>
+        <div class="score-desc" id="scorePercentage">0% Complete</div>
+      </div>
+
+      <!-- Strengths & Weaknesses: Key takeaways -->
+      <div id="strengthsWeaknesses" style="display: none;">
+        <h3 style="margin-top: 0; font-size: 16px; margin-bottom: 16px;">Your Strengths & Areas for Growth</h3>
+        <div class="strengths-weaknesses">
+          <div id="strengthCard" class="strength-card" style="display: none;">
+            <div class="strength-label">Strongest Component</div>
+            <p class="strength-text" id="strengthText">—</p>
+          </div>
+          <div id="weaknessCard" class="weakness-card" style="display: none;">
+            <div class="weakness-label">Area for Improvement</div>
+            <p class="weakness-text" id="weaknessText">—</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Per-Question Breakdown: Detailed feedback for each answer -->
+      <h3 style="margin-top: 32px; font-size: 16px; margin-bottom: 16px;">Question-by-Question Feedback</h3>
+      <div id="summaryContent" class="summary-entries"></div>
+
+      <!-- Restart Button -->
+      <div class="buttons" style="margin-top: 32px;">
+        <button id="restartBtn">Restart Interview</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER: Copyright & closing info
+       ============================================ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2026 Behavioural Interview Simulator | Master the STAR method</p>
+    </div>
+  </footer>
+
+  <!-- Load Frontend Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
